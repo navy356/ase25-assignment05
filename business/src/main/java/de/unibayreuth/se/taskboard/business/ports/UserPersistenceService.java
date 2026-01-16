@@ -17,7 +17,7 @@ public interface UserPersistenceService {
     @NonNull
     List<User> getAll();
     @NonNull
-    Optional<User> getById(UUID id);
+    Optional<User> getById(@NonNull UUID id);
     @NonNull
     User upsert(User user) throws UserNotFoundException, DuplicateNameException;
 }

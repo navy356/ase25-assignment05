@@ -3,6 +3,8 @@ package de.unibayreuth.se.taskboard.api.mapper;
 import de.unibayreuth.se.taskboard.api.dtos.TaskDto;
 import de.unibayreuth.se.taskboard.api.dtos.UserDto;
 import de.unibayreuth.se.taskboard.business.domain.Task;
+import de.unibayreuth.se.taskboard.business.exceptions.UserNotFoundException;
+import de.unibayreuth.se.taskboard.business.ports.UserService;
 import lombok.NoArgsConstructor;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Optional;
 import java.util.UUID;
 
 @Mapper(componentModel = "spring")
@@ -18,32 +21,37 @@ import java.util.UUID;
 @NoArgsConstructor
 public abstract class TaskDtoMapper {
     //TODO: Fix this mapper after resolving the other TODOs.
+    //DONE: Fixed mapper.
 
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private UserDtoMapper userDtoMapper;
 
     protected boolean utcNowUpdated = false;
     protected LocalDateTime utcNow;
 
-    //@Mapping(target = "assignee", expression = "java(getUserById(source.getAssigneeId()))")
-    @Mapping(target = "assignee", ignore = true)
+    @Mapping(target = "assignee", expression = "java(getUserById(source.getAssigneeId()))")
     public abstract TaskDto fromBusiness(Task source);
 
-    //@Mapping(target = "assigneeId", source = "assignee.id")
-    @Mapping(target = "assigneeId", ignore = true)
+    @Mapping(target = "assigneeId", source = "assignee.id")
     @Mapping(target = "status", source = "status", defaultValue = "TODO")
     @Mapping(target = "createdAt", expression = "java(mapTimestamp(source.getCreatedAt()))")
     @Mapping(target = "updatedAt", expression = "java(mapTimestamp(source.getUpdatedAt()))")
     public abstract Task toBusiness(TaskDto source);
 
     protected UserDto getUserById(UUID userId) {
-//        if (userId == null) {
-//            return null;
-//        }
-//        return userService.getById(userId).map(userDtoMapper::fromBusiness).orElse(null);
-        return null;
+        if (userId == null) {
+            return null;
+        }
+        //Note - Did not user this commented return line as it expects Optional<User> while UserService has User as the return type
+        //Note - This is to stay consistent with TaskService having Task instead of Optional<Task> unlike TaskPersistenceService
+        //return userService.getById(userId).map(userDtoMapper::fromBusiness).orElse(null);
+        try {
+            return userDtoMapper.fromBusiness(userService.getById(userId));
+        } catch (UserNotFoundException e) {
+            return null;
+        }
     }
 
     protected LocalDateTime mapTimestamp (LocalDateTime timestamp) {

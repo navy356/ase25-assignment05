@@ -19,3 +19,21 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+  maven:
+    image: maven:4.0.0-rc-5-eclipse-temurin-21
+    stop_signal: SIGKILL
+    stdin_open: true
+    tty: true
+    working_dir: $PWD
+    environment:
+      - DOCKER_API_VERSION=1.24
+    volumes:
+      - $PWD:$PWD
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Maven cache (optional)
+      - ~/.m2:/root/.m2
+      - $PWD/docker-java.properties:/root/.docker-java.properties
+    command: mvn clean install
+    profiles:
+      - maven

@@ -1,8 +1,7 @@
 package de.unibayreuth.se.taskboard.business.domain;
 
+import jakarta.annotation.Nullable;
 import lombok.*;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

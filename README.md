@@ -78,6 +78,12 @@ docker run --net container-net -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:543
 
 
 #### Using Docker compose to run the app together with the DB container
+Note - I added the``mvn clean install`` command as a docker service to get by the Minimum API issue of Testcontainers without modifying my environment.
+Build and install maven project:
+
+```shell
+docker-compose --profile maven run --rm maven
+```
 
 Build container image:
 

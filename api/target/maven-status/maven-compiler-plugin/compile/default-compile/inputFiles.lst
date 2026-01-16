@@ -1,0 +1,6 @@
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/controller/TaskController.java
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/controller/UserController.java
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/dtos/TaskDto.java
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/dtos/UserDto.java
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/mapper/TaskDtoMapper.java
+/home/navy/Documents/SDE/ase25-assignment05/api/src/main/java/de/unibayreuth/se/taskboard/api/mapper/UserDtoMapper.java

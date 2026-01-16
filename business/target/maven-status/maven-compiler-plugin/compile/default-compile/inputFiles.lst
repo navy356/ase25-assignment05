@@ -1,0 +1,13 @@
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/domain/Task.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/domain/TaskStatus.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/domain/User.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/exceptions/DuplicateNameException.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/exceptions/MalformedRequestException.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/exceptions/TaskNotFoundException.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/exceptions/UserNotFoundException.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/impl/TaskServiceImpl.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/impl/UserServiceImpl.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/ports/TaskPersistenceService.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/ports/TaskService.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/ports/UserPersistenceService.java
+/home/navy/Documents/SDE/ase25-assignment05/business/src/main/java/de/unibayreuth/se/taskboard/business/ports/UserService.java

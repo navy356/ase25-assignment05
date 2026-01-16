@@ -1,8 +1,11 @@
 package de.unibayreuth.se.taskboard;
 
 import de.unibayreuth.se.taskboard.api.dtos.TaskDto;
+import de.unibayreuth.se.taskboard.api.dtos.UserDto;
 import de.unibayreuth.se.taskboard.api.mapper.TaskDtoMapper;
+import de.unibayreuth.se.taskboard.api.mapper.UserDtoMapper;
 import de.unibayreuth.se.taskboard.business.domain.Task;
+import de.unibayreuth.se.taskboard.business.domain.User;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +69,40 @@ public class TaskBoardSystemTests extends AbstractSystemTest {
     }
 
     //TODO: Add at least one test for each new endpoint in the users controller (the create endpoint can be tested as part of the other endpoints).
+    //DONE: Added tests for endpoints in users controller.
+    @Autowired
+    private UserDtoMapper userDtoMapper;
+
+    @Test
+    void getAllCreatedUsers() {
+        List<User> createdUsers = TestFixtures.createUsers(userService);
+
+        List<User> retrievedUsers = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get("/api/users")
+                .then()
+                .statusCode(200)
+                .body(".", hasSize(createdUsers.size()))
+                .and()
+                .extract().jsonPath().getList("$", UserDto.class)
+                .stream()
+                .map(userDtoMapper::toBusiness)
+                .toList();
+    }
+
+    @Test
+    void getUserById() throws Exception {
+        var user = userService.create(TestFixtures.getUsers().getFirst());
+
+        given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get("/api/users/{id}", user.getId())
+                .then()
+                .statusCode(200)
+                .body("id", org.hamcrest.Matchers.equalTo(user.getId().toString()))
+                .body("name", org.hamcrest.Matchers.equalTo(user.getName()));
+    }
+
 }

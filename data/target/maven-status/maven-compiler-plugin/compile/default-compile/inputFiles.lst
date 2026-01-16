@@ -1,0 +1,8 @@
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/impl/TaskPersistenceServiceImpl.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/impl/UserPersistenceServiceImpl.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/mapper/TaskEntityMapper.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/mapper/UserEntityMapper.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/persistence/TaskEntity.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/persistence/TaskRepository.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/persistence/UserEntity.java
+/home/navy/Documents/SDE/ase25-assignment05/data/src/main/java/de/unibayreuth/se/taskboard/data/persistence/UserRepository.java
